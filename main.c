@@ -4,7 +4,7 @@ int main()
 {
   int menu = 1; 
 
-  printf("== FISIOGENDA AGENDAMENTO INTELIGENTE ==\n");
+  printf("== FISIOGENDA AGENDAMENTO INTELIGENTE ==\n\n");
   while (menu != 0) 
   {
     printf("Selecione uma opção para prosseguir:\n");
