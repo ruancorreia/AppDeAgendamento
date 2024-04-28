@@ -1,37 +1,33 @@
-#include <stdio.h>
-
-int main()
-{
-  int menu = 1; 
-
-  printf("== FISIOGENDA AGENDAMENTO INTELIGENTE ==\n\n");
-  while (menu != 0) 
-  {
-    printf("Selecione uma opção para prosseguir:\n");
-    printf("1 - Mostrar Calendário\n2 - Inserir Agendamento\n3 - Mostrar Calendário com agendamentos\n0 - Sair\n");
+int main(void){
+  /*
+  Espaço para colocar as funções criadas 
+  */
 
 
-    scanf("%d", &menu);
+  int escolha;
+  do{
+    printf("\n\n\t== FIOSIOGENDA ==\n");
+    printf("SELECIONE ABAIXO UMA DAS OPÇÕES:\n\n");
+    printf("1 - Mostrar Calendário\n");
+    printf("2 - Agendar Tratamento\n");
+    printf("3 - Sair\n");
+    printf("Digite sua escolha: ");
+    scanf("%d", &escolha);
 
-    switch (menu) 
-    {
+    switch (escolha){
     case 1:
-      printf("Mostrar Calendário\n");
+      printf("Função exibir_calendario()");
       break;
     case 2:
-      printf("Inserir Agendamento\n");
+      printf("Função agendar_compromisso()");
       break;
     case 3:
-      printf("Mostrar Calendário com agendamentos\n");
-      break;
-    case 0:
-      printf("Saindo do programa\n");
+      printf("Programa finalizado com sucesso...\n");
       break;
     default:
-      printf("Opção inválida\n");
-      break;
+      printf("Escolha inválida! Por favor, tente novamente.\n");
     }
-  }
+  } while (escolha != 3);
 
   return 0;
 }
