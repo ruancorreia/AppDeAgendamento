@@ -164,7 +164,7 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
       if ((dia + dia_inicio_mes) % 7 > 0)
         printf("   ");
       else
-        printf("\n ");
+        printf("\n");
     }
 
     printf("\n\n");
@@ -196,7 +196,7 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
       if ((dia + dia_inicio_mes) % 7 > 0)
         printf("   ");
       else
-        printf("\n ");
+        printf("\n");
     }
 
     printf("\n\n");
