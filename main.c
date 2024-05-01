@@ -5,7 +5,6 @@
 Aqui foram definidas constantes que criarão a identidade visual do programa
 para que a visualização do usuario seja mais facil na hora de procurar
 */
-
 #define RED "\x1B[31m"
 #define GREEN "\x1B[32m"
 #define BLUE "\x1B[34m"
@@ -13,9 +12,8 @@ para que a visualização do usuario seja mais facil na hora de procurar
 #define BG_BLUE "\033[44;1m"
 #define BG_GREEN "\033[42m"
 
-/*
-DECLARAÇÃO DE FUNÇÕES
-*/
+
+// DECLARAÇÃO DE FUNÇÕES
 int inserir_dia_inicio(void);
 int inserir_ano_bissexto(void);
 int determinar_codigo_dia(int dia_inicio);
@@ -40,7 +38,8 @@ char meses[][20] = {
     "\n\n\nSetembro",
     "\n\n\nOutubro",
     "\n\n\nNovembro",
-    "\n\n\nDezembro"};
+    "\n\n\nDezembro"
+};
 
 int main(void)
 {
@@ -82,6 +81,7 @@ int main(void)
   return 0;
 }
 
+
 /*
 Esta funçao tem o objetivo de pedir ao usuario que insira o primeiro dia do ano indicando o dia da semana em que ele vai cair
 Exemplo: ao selecionar 0, o primeiro dia da semana sera domingo, 1º de janeiro.
@@ -93,6 +93,7 @@ int inserir_dia_inicio(void)
   scanf("%d", &dia);
   return dia;
 }
+
 
 /*
 Esta funçao irá perguntar ao usuário se o ano é bissexto ou nao
@@ -106,6 +107,7 @@ int inserir_ano_bissexto(void)
   return bissexto;
 }
 
+
 /*
 Função para determinar o código do dia, ou seja, se foi escolhido 0 apresenta domingo como dia inicial na agenda senão apresenta sabado
 */
@@ -113,6 +115,7 @@ int determinar_codigo_dia(int dia_inicio)
 {
   return dia_inicio % 7;
 }
+
 
 /*
 Esta funçao irá verificar se o ano foi definido como bissexto ou nao
@@ -131,6 +134,7 @@ int determinar_ano_bissexto(int bissexto, int dias_no_mes[])
     return 0;
   }
 }
+
 
 /*
 Esta funçao irá percorrer os arrays e exibir os calendários
@@ -205,6 +209,8 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
     dia_inicio_mes = (dia_inicio_mes + dias_no_mes[mes]) % 7;
   }
 }
+
+
 // Função para agendar um compromisso
 /*
 Função criada para fazer o agendamento dos procedimentos,
