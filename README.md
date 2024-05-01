@@ -1,50 +1,40 @@
-# AppDeAgendamento
-Agenda de compromissos
+# FISIOGENDA App de Agendamento 
 
-Caso:
-Um fisioterapeuta está precisando da sua ajuda para melhorar sua agenda. O fisioterapeuta trata de pacientes com dores urgentes de todos os tipos, para isso ele trabalha todos os dias. Ele faz planos de pacotes de atendimentos diários para cada paciente. Ou seja, um paciente pode solicitar 10 dias de tratamento, 15 dias, etc… O fisioterapeuta só consegue atender 5 pacientes por dia. O problema é que ele está se perdendo ao fazer agendamentos de pacientes para ao longo do ano, eventualmente ele acaba com mais de 5 pacientes por dia e precisa cancelar. Para resolver esse problema ele precisa que você crie uma agenda que que cadastre agendamentos e indique quantos pacientes ele deve atender em cada dia do ano.
+> [!NOTE]
+> O FISIOGENDA é um programa desenvolvido em linguagem C como tarefa do TDE de Programação de computadores 2º Período, sob a supervisão do professor [Raphael da Silva Abreu](https://github.com/raphael-abreu) da universidade Unilasalle em Niterói
+<br>
 
+**Alunos envolvidos no projeto:**
+1. [Bernardo Cezar](https://github.com/bercezar)
+2. [Ruan da Silva Correia](https://github.com/ruancorreia)
+3. [Thiago Guarino](https://github.com/thiagoguarino)
 
-**A Tarefa:**
+<br>
 
+**Requisitos necessários para aprovação do projeto:**<br>
 Escreva um programa em C que exiba um calendário de um ano e gerencie agendamentos. Ao iniciar, o programa deve solicitar ao usuário o dia da semana em que 1º de janeiro cai e se o ano é bissexto ou não. Com essas informações pode-se montar todo o calendário. Depois disso, o programa deve permitir em um menu: 
+- [x] mostrar o calendário.
+- [x] inserir agendamentos.  Esta função deve solicitar ao usuário a data de início e a duração do agendamento. Em um dado dia, não se pode ter mais do que 5 pacientes agendados. Caso ocorra um conflito, deve-se dizer que não pode agendar naquele dia. 
+- [x] mostrar o calendário com agendamentos. :tada:
 
-(i) mostrar o calendário.
 
-(ii) inserir agendamentos.  Esta função deve solicitar ao usuário a data de início e a duração do agendamento. Em um dado dia, não se pode ter mais do que 5 pacientes agendados. Caso ocorra um conflito, deve-se dizer que não pode agendar naquele dia.  
 
-(iii) mostrar o calendário com agendamentos.
+**Funcionalidades:**
+* Inserir o dia da semana em que cai o dia 1º de Janeiro.
+* Verificar se o ano é bissexto.
+* Exibir o calendário regular e o calendário de compromissos agendados.
+* Agendar compromissos, com validação de datas e controle de capacidade.
 
-No `main()`, você deve ter um array de agendamentos que vai controlar quais dias tem quantos agendamentos. O array deve ter o tamanho do ano. Este array deve ser acessado pelas funções.
+**Como Usar**<br>
+Clone o repositório para sua máquina local.
+Abra o terminal e navegue até o diretório onde o programa foi clonado.
+Compile o programa usando o comando gcc fisiogenda.c -o fisiogenda.
+Execute o programa com o comando ./fisiogenda.
 
-Exemplo de formas de mostrar o calendário:
+Siga as instruções exibidas no menu para utilizar as funcionalidades do programa.
 
- *** CALENDÁRIO ***
-Janeiro
-Dom Seg Ter Qua Qui Sex Sab
-                  1   2   3
-  4   5   6   7   8   9  10
- 11  12  13  14  15  16  17
- 18  19  20  21  22  23  24
- 25  26  27  28  29  30  31
+Contribuições:
+Contribuições são bem-vindas! Se você encontrar algum problema, bug ou tiver alguma sugestão de melhoria, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-Fevereiro
-Dom Seg Ter Qua Qui Sex Sab
-  1   2   3   4   5   6   7
-  8   9  10  11  12  13  14
- .
- .
- .
-	
-	
-*** CALENDÁRIO DE AGENDAMENTOS ***
-Janeiro
-Dom Seg Ter Qua Qui Sex Sab
-                  0   0   0
-  1   1   2   2   2   2   1
-  1   2   3   3   3   4   4
-  3   3   2   2   2   2   2
-  1   0   0   0   0   0   0
-	.
-	.
-	.
+Licença
+Este projeto está licenciado sob a Licença MIT.
