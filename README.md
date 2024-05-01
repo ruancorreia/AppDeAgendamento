@@ -18,23 +18,29 @@ Escreva um programa em C que exiba um calendário de um ano e gerencie agendamen
 - [x] mostrar o calendário com agendamentos. :tada:
 
 
-
 **Funcionalidades:**
 * Inserir o dia da semana em que cai o dia 1º de Janeiro.
 * Verificar se o ano é bissexto.
 * Exibir o calendário regular e o calendário de compromissos agendados.
 * Agendar compromissos, com validação de datas e controle de capacidade.
 
-**Como Usar**<br>
-Clone o repositório para sua máquina local.
-Abra o terminal e navegue até o diretório onde o programa foi clonado.
-Compile o programa usando o comando gcc fisiogenda.c -o fisiogenda.
-Execute o programa com o comando ./fisiogenda.
+>[!CAUTION]
+> **DIFICULDADES NO PROJETO:** <br>
+>Cmomo espaçar corretamente os dias da semana e as datas. <br>
+>Como usar o git para versionamento dos códigos e sincronização entre computadores <br>
+>Como validar e gerar o ano bissexto na visualização <br>
+>Como documentar de forma correta e concisa os trechos de códigos mais importantes
 
-Siga as instruções exibidas no menu para utilizar as funcionalidades do programa.
 
-Contribuições:
-Contribuições são bem-vindas! Se você encontrar algum problema, bug ou tiver alguma sugestão de melhoria, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+>[!TIP]
+>**IMPLEMENTAÇÕES FUTURAS:** <br>
+>Adicionar cor vermelha nos dias em que o agendamento ja estiver cheio. <br> 
+>Criar interface visual. <br>
+>Criar uma versão Web desse projeto. <br>
+>Publicar esse app. <br>
+
+Contribuições: <BR>
+`Contribuições são bem-vindas! Se você encontrar algum problema, bug ou tiver alguma sugestão de melhoria, sinta-se à vontade para abrir uma issue ou enviar um pull request.`
 
 Licença
 Este projeto está licenciado sob a Licença MIT.
