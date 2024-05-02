@@ -17,8 +17,8 @@ int inserir_dia_inicio(void);
 int inserir_ano_bissexto(void);
 int determinar_codigo_dia(int dia_inicio);
 int determinar_ano_bissexto(int bissexto, int dias_no_mes[]);
-void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dias_no_mes[]);
-void agendar_compromisso(int compromissos[], int ano, int dias_no_mes[]);
+void exibir_calendario(int dia_inicio, int bissexto, int agendamentos[], int dias_no_mes[]);
+void agendar_tratamento(int agendamentos[], int ano, int dias_no_mes[]);
 
 /*Os valores iniciais vazios ou nulos facilitam a integração numérica correta com os meses e seus respectivos últimos dias. */
 int dias_no_mes[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -47,7 +47,7 @@ int main(void)
   ano_bissexto = inserir_ano_bissexto();
 
   // Array para armazenar os agendamentos, um para cada dia do ano
-  int compromissos[12 * 31] = {0}; // Inicializar todas as contagens para 0
+  int agendamentos[12 * 31] = {0}; // Inicializar todas as contagens para 0
 
   int escolha;
   do
@@ -63,10 +63,10 @@ int main(void)
     switch (escolha)
     {
     case 1:
-      exibir_calendario(dia_inicio, ano_bissexto, compromissos, dias_no_mes);
+      exibir_calendario(dia_inicio, ano_bissexto, agendamentos, dias_no_mes);
       break;
     case 2:
-      agendar_compromisso(compromissos, ano_bissexto, dias_no_mes);
+      agendar_tratamento(agendamentos, ano_bissexto, dias_no_mes);
       break;
     case 3:
       printf("Programa finalizado com sucesso...\n");
@@ -126,7 +126,7 @@ int determinar_ano_bissexto(int bissexto, int dias_no_mes[])
 }
 
 /*Função responsável pela exibição dos meses datados e dos meses contendo os agendamentos*/
-void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dias_no_mes[])
+void exibir_calendario(int dia_inicio, int bissexto, int agendamentos[], int dias_no_mes[])
 {
   int mes, dia;
   int dias_no_mes_temp[13];
@@ -162,7 +162,7 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
     dia_inicio_mes = (dia_inicio_mes + dias_no_mes[mes]) % 7;
   }
 
-  printf(BG_GREEN "Calendário de Compromissos:\n" RESET);
+  printf(BG_GREEN "Calendário de agendamentos:\n" RESET);
 
   // Exibir calendário de agendamento com marcações
   dia_inicio_mes = dia_inicio;    // Resetar dia de início
@@ -180,7 +180,7 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
     // Imprime os dias do mês a partir do primeiro dia e até o último determinado por    'dias_no_mes[mes]', sendo iterado em cima de cada dia do mês atual
     for (dia = 1; dia <= dias_no_mes[mes]; dia++)
     {
-      printf("%2d", compromissos[(mes - 1) * 31 + (dia - 1)]); // Acessa o array agendamentos para obter o número de compromissos marcados para o dia atual.
+      printf("%2d", agendamentos[(mes - 1) * 31 + (dia - 1)]); // Acessa o array agendamentos para obter o número de agendamentos marcados para o dia atual.
 
       // O dia é antes de Sáb? Se sim, começar na próxima linha com Dom.
       if ((dia + dia_inicio_mes) % 7 > 0)
@@ -203,7 +203,7 @@ ela vai pegar o mês e o dia (validando se esta corretamente preenchido)
 e validando se não há mais do que 5 agendamentos naquele dia, caso haja, irá apresentar uma mensagem
 informando que ja esta no limite.
 */
-void agendar_compromisso(int compromissos[], int ano, int dias_no_mes[])
+void agendar_tratamento(int agendamentos[], int ano, int dias_no_mes[])
 {
   int mes, dia, duracao;
 
@@ -223,9 +223,9 @@ void agendar_compromisso(int compromissos[], int ano, int dias_no_mes[])
   int indice = (mes - 1) * 31 + (dia - 1);
 
   // Verificar se já existem agendamentos marcados para este dia, se houver retornar uma mensagem de erro
-  if (compromissos[indice] >= 5)
+  if (agendamentos[indice] >= 5)
   {
-    printf("Desculpe, máximo de compromissos alcançado para este dia!\n");
+    printf("Desculpe, máximo de agendamentos alcançado para este dia!\n");
     return;
   }
 
@@ -240,8 +240,8 @@ void agendar_compromisso(int compromissos[], int ano, int dias_no_mes[])
       printf("Duração do tratamento excede o ano!\n");
       return;
     }
-    compromissos[indice + i] += 1; // Incrementar contagem de agendamentos para cada dia do tratamento e retornar uma mensagem de sucesso
+    agendamentos[indice + i] += 1; // Incrementar contagem de agendamentos para cada dia do tratamento e retornar uma mensagem de sucesso
   }
 
-  printf("Compromisso agendado com sucesso!\n");
+  printf("Tratamento agendado com sucesso!\n");
 }
