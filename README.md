@@ -14,7 +14,7 @@
 ___
 
 **Requisitos necessários para aprovação do projeto:**<br>
-
+[Link do notion com os requisitos completos e exemplos](https://raphael08.notion.site/PROG-2-Trabalho-AV1-Agenda-de-compromissos-bf1901363bab499897d6227f941be0d1) <br>
 Escreva um programa em C que exiba um calendário de um ano e gerencie agendamentos. Ao iniciar, o programa deve solicitar ao usuário o dia da semana em que 1º de janeiro cai e se o ano é bissexto ou não. Com essas informações pode-se montar todo o calendário. Depois disso, o programa deve permitir em um menu:
 
 - [x] mostrar o calendário.
