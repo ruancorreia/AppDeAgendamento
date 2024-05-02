@@ -3,6 +3,7 @@
 > [!NOTE]
 > O FISIOGENDA é um programa desenvolvido em linguagem C como tarefa do TDE de Programação de computadores 2º Período, sob a supervisão do professor [Raphael da Silva Abreu](https://github.com/raphael-abreu) da universidade Unilasalle em Niterói
 > <br>
+> Ele foi desenvolvido para que um fisioterapeuta consiga agendar exames sem complicações e sem que exceda os dias disponiveis na agenda, pois neste caso ele teria que cancelar, o que é ruim para ele e para o paciente.
 
 **Alunos envolvidos no projeto:**
 
