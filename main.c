@@ -12,7 +12,6 @@ para que a visualização do usuario seja mais facil na hora de procurar
 #define BG_BLUE "\033[44;1m"
 #define BG_GREEN "\033[42m"
 
-
 // DECLARAÇÃO DE FUNÇÕES
 int inserir_dia_inicio(void);
 int inserir_ano_bissexto(void);
@@ -21,7 +20,7 @@ int determinar_ano_bissexto(int bissexto, int dias_no_mes[]);
 void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dias_no_mes[]);
 void agendar_compromisso(int compromissos[], int ano, int dias_no_mes[]);
 
-
+/*Os valores iniciais vazios ou nulos facilitam a integração numérica correta com os meses e seus respectivos últimos dias. */
 int dias_no_mes[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 char meses[][20] = {
@@ -38,8 +37,7 @@ char meses[][20] = {
     "\n\n\nSetembro",
     "\n\n\nOutubro",
     "\n\n\nNovembro",
-    "\n\n\nDezembro"
-};
+    "\n\n\nDezembro"};
 
 int main(void)
 {
@@ -81,11 +79,8 @@ int main(void)
   return 0;
 }
 
-
-/*
-Esta funçao tem o objetivo de pedir ao usuario que insira o primeiro dia do ano indicando o dia da semana em que ele vai cair
-Exemplo: ao selecionar 0, o primeiro dia da semana sera domingo, 1º de janeiro.
-*/
+/*Função determinada para que o usuário insira o dia da semana em que se inicia o ano.
+0(domingo) - 7(sábado)*/
 int inserir_dia_inicio(void)
 {
   int dia;
@@ -94,10 +89,8 @@ int inserir_dia_inicio(void)
   return dia;
 }
 
-
 /*
-Esta funçao irá perguntar ao usuário se o ano é bissexto ou nao
-retornando 1 para caso positivo e 0 para caso negativo.
+Função determinada para que seja informado se o ano é bissexto ou não. Retorna: 1 ou 0
 */
 int inserir_ano_bissexto(void)
 {
@@ -107,19 +100,16 @@ int inserir_ano_bissexto(void)
   return bissexto;
 }
 
-
 /*
 Função para determinar o código do dia, ou seja, se foi escolhido 0 apresenta domingo como dia inicial na agenda senão apresenta sabado
 */
 int determinar_codigo_dia(int dia_inicio)
 {
-  return dia_inicio % 7;
+  return dia_inicio % 7; // Retorno variando de 0 até 7, variações representam os dias da semana (0 - domingo, 1- segunda...)
 }
 
-
 /*
-Esta funçao irá verificar se o ano foi definido como bissexto ou nao
-e irá ajustar os dias de fevereiro de acordo
+Função recebe como parâmetros o resultado se o ano é bissexto ou não e o vetor representando os dias do mês, com isso, dada a resposta como (1 ou 0) do "bissexto" será feita a mudança no mês de fevereiro
 */
 int determinar_ano_bissexto(int bissexto, int dias_no_mes[])
 {
@@ -135,11 +125,7 @@ int determinar_ano_bissexto(int bissexto, int dias_no_mes[])
   }
 }
 
-
-/*
-Esta funçao irá percorrer os arrays e exibir os calendários
-Regular e de Compromissos Agendados.
-*/
+/*Função responsável pela exibição dos meses datados e dos meses contendo os compromissos*/
 void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dias_no_mes[])
 {
   int mes, dia;
@@ -149,11 +135,11 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
   // Ajustar os dias de Fevereiro para ano bissexto
   determinar_ano_bissexto(bissexto, dias_no_mes);
 
-  printf(BG_BLUE"\nCalendário Regular:\n"RESET);
+  printf(BG_BLUE "\nCalendário Regular:\n" RESET);
 
   for (mes = 1; mes <= 12; mes++)
   {
-    printf(GREEN"%s"RESET, meses[mes]);
+    printf(GREEN "%s" RESET, meses[mes]);
     printf(RED "\n\nDom  Seg  Ter  Qua  Qui  Sex  Sáb\n" RESET);
 
     for (int i = 0; i < dia_inicio_mes; i++)
@@ -176,11 +162,11 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
     dia_inicio_mes = (dia_inicio_mes + dias_no_mes[mes]) % 7;
   }
 
-  printf(BG_GREEN"Calendário de Compromissos:\n"RESET);
+  printf(BG_GREEN "Calendário de Compromissos:\n" RESET);
 
   // Exibir calendário de compromissos agendados
-  dia_inicio_mes = dia_inicio; // Resetar dia de início
-  for (mes = 1; mes <= 12; mes++)
+  dia_inicio_mes = dia_inicio;    // Resetar dia de início
+  for (mes = 1; mes <= 12; mes++) //
   {
     printf("%s", meses[mes]);
     printf("\n\nDom  Seg  Ter  Qua  Qui  Sex  Sáb\n");
@@ -191,10 +177,10 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
       printf("     ");
     }
 
-    // Imprimir todos os compromissos para um mês
+    // Imprime os dias do mês a partir do primeiro dia e até o último determinado por    'dias_no_mes[mes]', sendo iterado em cima de cada dia do mês atual
     for (dia = 1; dia <= dias_no_mes[mes]; dia++)
     {
-      printf("%2d", compromissos[(mes - 1) * 31 + (dia - 1)]);
+      printf("%2d", compromissos[(mes - 1) * 31 + (dia - 1)]); // Acessa o array compromissos para obter o número de compromissos marcados para o dia atual.
 
       // O dia é antes de Sáb? Se sim, começar na próxima linha com Dom.
       if ((dia + dia_inicio_mes) % 7 > 0)
@@ -210,12 +196,11 @@ void exibir_calendario(int dia_inicio, int bissexto, int compromissos[], int dia
   }
 }
 
-
 // Função para agendar um compromisso
 /*
 Função criada para fazer o agendamento dos procedimentos,
-ela vai pegar o mes e o dia (validando se esta corretamente preenchido)
-e validando se nao há mais do que 5 agendamentos naquele dia, caso haja, irá apresentar uma mensagem
+ela vai pegar o mês e o dia (validando se esta corretamente preenchido)
+e validando se não há mais do que 5 agendamentos naquele dia, caso haja, irá apresentar uma mensagem
 informando que ja esta no limite.
 */
 void agendar_compromisso(int compromissos[], int ano, int dias_no_mes[])
