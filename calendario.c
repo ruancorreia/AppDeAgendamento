@@ -84,8 +84,11 @@ int main(void)
 int inserir_dia_inicio(void)
 {
   int dia;
+  do
+  {
   printf("Por favor, insira o dia da semana em que cai o dia 1º de Janeiro (0 para Domingo, 1 para Segunda-feira, ..., 6 para Sábado): ");
   scanf("%d", &dia);
+  }while(dia >= 7);
   return dia;
 }
 
